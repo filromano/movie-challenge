@@ -12,16 +12,30 @@ export const getters = {
 
 export const mutations = {
   updateMovies: (state, value) => {
-    state.movies = value
+    value.map(movie => state.movies.push(movie))
+  },
+  cleanMovies: (state) => {
+    state.movies = []
   }
 }
 
 export const actions = {
-  searchMovie: ({ commit }, value) => {
-    axios.get(`https://www.omdbapi.com/?apikey=c267f60c&s=${value}`)
+  searchMovie: ({ commit, dispatch }, name) => {
+    axios.get(`https://www.omdbapi.com/?apikey=c267f60c&type=movie&s=${name}`)
       .then((response) => {
-        commit('updateMovies', response.data.Search)
+        commit('cleanMovies')
+        const pages = response.data.totalResults / 10
+        dispatch('getAllMovies', { pages, name })
       })
       .catch(error => console.log(error))
+  },
+  getAllMovies: ({ commit }, value) => {
+    for (let i = 0; i < value.pages; i++) {
+      axios.get(`https://www.omdbapi.com/?apikey=c267f60c&page=${i + 1}&type=movie&s=${value.name}`)
+        .then((response) => {
+          commit('updateMovies', response.data.Search)
+        })
+        .catch(error => console.log(error))
+    }
   }
 }
