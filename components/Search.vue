@@ -1,20 +1,45 @@
 <template>
   <div class="search">
-    <input type="text" placeholder="Procure seu filme">
-    <button>Buscar</button>
+    <input
+      v-model="name"
+      type="text"
+      placeholder="Procure seu filme"
+      @keyup.enter="getMovies"
+    >
+    <button @click="getMovies">
+      Buscar
+    </button>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+  data () {
+    return {
+      name: ''
+    }
+  },
+  methods: {
+    ...mapActions(['searchMovie']),
+    getMovies () {
+      this.searchMovie(this.name)
+    }
+  }
 }
 </script>
 
 <style lang="scss">
   .search {
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 150px);
     display: flex;
-    width: 500px;
     margin: auto;
+    width: 300px;
+    height: 50px;
+    transition: all 1.5s;
 
     input {
       display: block;
