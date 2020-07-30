@@ -3,7 +3,8 @@
     <ul>
       <li v-for="movie in movies" :key="movie.imbID">
         <div class="movie-item">
-          <img :src="movie.Poster" alt="">
+          <p>{{ movie.Title }}</p>
+          <img :src="movie.Poster !== 'N/A' ? movie.Poster : require('~/assets/images/default.png')" alt="">
         </div>
       </li>
     </ul>
@@ -11,11 +12,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 
 export default {
-  computed: {
-    ...mapState(['movies'])
+  props: {
+    movies: {
+      type: Array,
+      default: null
+    }
   }
 }
 </script>
@@ -46,7 +49,8 @@ export default {
 
           img {
             display: block;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
             margin: 0 auto;
           }
         }

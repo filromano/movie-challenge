@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const state = () => ({
-  movies: []
+  movies: [],
+  pages: []
 })
 
 export const getters = {
@@ -16,6 +17,14 @@ export const mutations = {
   },
   cleanMovies: (state) => {
     state.movies = []
+  },
+  paginateMovies: (state) => {
+    const chunk = 6
+    let temporaryArray
+    for (let i = 0; i < state.movies.length; i += chunk) {
+      temporaryArray = state.movies.slice(i, i + chunk)
+      state.pages.push(temporaryArray)
+    }
   }
 }
 
@@ -24,7 +33,7 @@ export const actions = {
     axios.get(`https://www.omdbapi.com/?apikey=c267f60c&type=movie&s=${name}`)
       .then((response) => {
         commit('cleanMovies')
-        const pages = response.data.totalResults / 10
+        const pages = Math.ceil(response.data.totalResults / 10)
         dispatch('getAllMovies', { pages, name })
       })
       .catch(error => console.log(error))
@@ -34,6 +43,9 @@ export const actions = {
       axios.get(`https://www.omdbapi.com/?apikey=c267f60c&page=${i + 1}&type=movie&s=${value.name}`)
         .then((response) => {
           commit('updateMovies', response.data.Search)
+          if (i === value.pages - 1) {
+            commit('paginateMovies')
+          }
         })
         .catch(error => console.log(error))
     }

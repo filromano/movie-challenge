@@ -2,7 +2,7 @@
   <div class="container">
     <Search :class="[gotMovies ? 'top' : '']" />
     <transition name="fade">
-      <MovieList v-if="gotMovies" />
+      <MoviePagination v-if="gotMovies" />
     </transition>
   </div>
 </template>
