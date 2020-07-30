@@ -21,9 +21,11 @@ export default {
 
   .container {
     position: relative;
+    box-sizing: border-box;
     display: block;
     width: 100%;
     height: 100%;
+    padding: 0 50px;
     background: #777DA7;
     .top {
       top: 5%;

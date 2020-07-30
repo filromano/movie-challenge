@@ -8,7 +8,7 @@
     />
     <ul class="page-numbers">
       <li v-for="(page, index) in pages" :key="index">
-        <span @click="changePage(index)"> {{ index }} </span>
+        <span @click="changePage(index)"> {{ index + 1 }} </span>
       </li>
     </ul>
   </div>
