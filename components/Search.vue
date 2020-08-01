@@ -51,6 +51,7 @@ export default {
       border: none;
       border-radius: $border-radius;
       outline: none;
+      box-shadow: $boxShadow;
     }
 
     button {
@@ -60,6 +61,7 @@ export default {
       border-radius: $border-radius;
       outline: none;
       background: $teal;
+      box-shadow: $boxShadow;
       color: $fontWhite;
       cursor: pointer;
 

@@ -2,8 +2,14 @@
   <div class="movie-page">
     <MovieList :paginate="paginate" />
     <ul class="page-numbers">
-      <li v-for="(pageNumber, index) in totalPages" :key="index">
-        <a href="#" @click="changePage(pageNumber)">{{ pageNumber }}</a>
+      <li
+        v-for="(pageNumber, index) in totalPages"
+        :key="index"
+        :class="{current: currentPage === pageNumber - 1, last: (pageNumber == totalPages && Math.abs(pageNumber - currentPage - 1) > 3), first:(pageNumber - 1 == 0 && Math.abs(pageNumber - currentPage - 1) > 3), none: (Math.abs(pageNumber - currentPage - 1) > 3) }"
+      >
+        <span
+          @click="changePage(pageNumber)"
+        >{{ pageNumber }}</span>
       </li>
     </ul>
   </div>
@@ -49,12 +55,35 @@ export default {
     width: 100%;
 
     .page-numbers {
-      @include flexDisplay($wrap: wrap);
+      @include flexDisplay($content: center);
       width: 100%;
+      margin-top: 50px;
       list-style: none;
       li {
-        padding: 0 5px;
-        cursor: pointer
+        padding: 10px;
+        cursor: pointer;
+      }
+      .current {
+        color: blue;
+      }
+
+      .first{
+        display: block !important;
+
+        &::after {
+        content:'...'
+      }
+      }
+
+      .last {
+        display: block !important;
+        &::before {
+          content:'...'
+        }
+      }
+
+      .none {
+        display: none;
       }
     }
   }
