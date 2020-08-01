@@ -1,15 +1,13 @@
 <template>
-  <div class="container">
+  <div class="layout-default">
     <Nuxt />
   </div>
 </template>
 
 <style lang="scss">
-  .container {
-    box-sizing: border-box;
+  .layout-default {
     display: block;
+    box-sizing: border-box;
     width: 100%;
-    height: 100%;
-    padding: 50px;
   }
 </style>

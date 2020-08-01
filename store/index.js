@@ -2,12 +2,13 @@ import axios from 'axios'
 
 export const state = () => ({
   movies: [],
-  pages: []
+  pages: [],
+  finishLoadMovies: null
 })
 
 export const getters = {
   gotMovies: (state) => {
-    return state.movies.length > 0
+    return state.finishLoadMovies
   }
 }
 
@@ -17,6 +18,9 @@ export const mutations = {
   },
   cleanMovies: (state) => {
     state.movies = []
+  },
+  updateLoad: (state) => {
+    state.finishLoadMovies = true
   }
 }
 
@@ -35,6 +39,9 @@ export const actions = {
       axios.get(`https://www.omdbapi.com/?apikey=c267f60c&page=${i + 1}&type=movie&s=${value.name}`)
         .then((response) => {
           commit('updateMovies', response.data.Search)
+          if (i === value.pages - 1) {
+            commit('updateLoad')
+          }
         })
         .catch(error => console.log(error))
     }

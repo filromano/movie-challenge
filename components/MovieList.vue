@@ -58,7 +58,6 @@ export default {
   .movie-list {
     display: block;
     width: 100%;
-    padding-top: 150px;
     ul {
       @include flexDisplay($direction: column, $wrap: wrap, $items: center, $content: space-between);
       width: 100%;

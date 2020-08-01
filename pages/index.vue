@@ -1,9 +1,11 @@
 <template>
   <div class="index-page">
-    <Search :class="[gotMovies ? 'top' : '']" />
-    <transition name="fade">
-      <MoviePagination v-if="gotMovies" />
-    </transition>
+    <Search />
+    <div class="container">
+      <transition name="fade">
+        <MoviePagination v-if="gotMovies" />
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -24,10 +26,6 @@ export default {
     box-sizing: border-box;
     display: block;
     width: 100%;
-    height: 100%;
-    .top {
-      top: 2%;
-    }
   }
 
   .fade-enter-active, .fade-leave-active {

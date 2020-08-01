@@ -32,3 +32,11 @@ $breakpoints: (
     }
   }
 }
+
+.container {
+  display: block;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+  padding: 0 50px;
+}

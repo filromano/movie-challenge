@@ -1,37 +1,52 @@
 <template>
-  <div class="search">
-    <input
-      v-model="name"
-      type="text"
-      placeholder="Procure seu filme"
-      @keyup.enter="getMovies"
-    >
-    <button @click="getMovies">
-      Buscar
-    </button>
+  <div :style="{height: activeHeight + 'px'}" :class="{'search-container': gotMovies}">
+    <div class="search" :class="{'move-top': gotMovies}">
+      <input
+        v-model="name"
+        type="text"
+        placeholder="Procure seu filme"
+        @keyup.enter="getMovies"
+      >
+      <button @click="getMovies">
+        Buscar
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      name: ''
+      name: '',
+      activeHeight: ''
     }
+  },
+  computed: {
+    ...mapGetters(['gotMovies'])
   },
   methods: {
     ...mapActions(['searchMovie']),
     getMovies () {
       this.searchMovie(this.name)
     }
+  },
+  mounted () {
+    this.activeHeight = window.innerHeight
   }
 }
 </script>
 
 <style lang="scss">
   @import '../assets/css/utils.scss';
+
+  .search-container {
+    position: relative;
+    height: 200px !important;
+    transition: all 1.5s;
+  }
 
   .search {
     position: absolute;
@@ -41,7 +56,6 @@ export default {
     margin: auto;
     width: 300px;
     height: 50px;
-    transition: all 1.5s;
 
     input {
       display: block;
