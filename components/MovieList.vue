@@ -10,7 +10,7 @@
       >
         <img :src="movie.Poster !== 'N/A' ? movie.Poster : require('~/assets/images/default.png')" :alt="movie.Title">
         <div class="tooltip" :class="{alpha: index === addIndex}">
-          <p><strong>Título:</strong> {{ movie.Title }}</p>
+          <p>{{ movie.Title }}</p>
           <n-link
             :to="{ path: `/details/${movie.imdbID}`}"
             class="more-info"
@@ -53,73 +53,89 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../assets/css/utils.scss';
+
   .movie-list {
     display: block;
     width: 100%;
-    padding-top: 100px;
+    padding-top: 150px;
     ul {
-      display: flex;
-      flex-wrap: wrap;
-      box-sizing: border-box;
+      @include flexDisplay($direction: column, $wrap: wrap, $items: center, $content: space-between);
       width: 100%;
       list-style: none;
 
       .movie-item {
+        @include flexDisplay();
         position: relative;
-        display: block;
-        box-sizing: border-box;
-        width: 15%;
+        width: 60%;
         height: 280px;
         margin: 0 20px 20px 0;
         padding: 20px;
+        border-radius: $border-radius;
+        background-color: $teal;
+        box-shadow: $boxShadow;
 
-          img {
+        img {
+          display: block;
+          position: relative;
+          max-width: 100%;
+          max-height: 100%;
+          margin: auto;
+          z-index: 998;
+        }
+
+        .tooltip {
+          @include flexDisplay($direction: column, $content: space-between);
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+          width: 90%;
+          height: auto;
+          padding: 15px;
+          border-radius: $border-radius;
+          background-color: $blueAlpha;
+          transition: all .7s;
+          z-index: 999;
+          opacity: 0;
+
+          .more-info {
             display: block;
-            position: relative;
-            max-width: 100%;
-            max-height: 100%;
-            margin: auto;
-            z-index: 998;
+            padding: 5px 0;
+            margin-top: 10px;
+            border: none;
+            border-radius: $border-radius;
+            outline: none;
+            background-color: #5863F8;
+            box-shadow: $boxShadow;
+            text-decoration: none;
+            text-align: center;
+            color: #FFFFFF;
+            cursor: pointer;
           }
+        }
 
-          .tooltip {
-            position: absolute;
-            box-sizing: border-box;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 100%;
-            height: 100%;
-            padding: 15px;
-            background-color: #d05353e7;
-            z-index: 999;
-            opacity: 0;
-
-            p {
-              font-size: 1.2em;
-            }
-
-            .more-info {
-              display: block;
-              padding: 10px 0;
-              border: none;
-              border-radius: 15px;
-              outline: none;
-              background-color: #E58F65;
-              text-decoration: none;
-              text-align: center;
-              font-size: 1.2em;
-              color: #FFFFFF;
-              cursor: pointer;
-            }
-          }
-
-          .alpha {
-            opacity: 1;
-          }
+        .alpha {
+          opacity: 1;
         }
       }
     }
+
+    @include respond-to('medium'){
+      ul {
+        flex-direction: row;
+
+        .movie-item {
+          width: 30%;
+        }
+      }
+    }
+
+    @include respond-to('large'){
+      ul {
+        .movie-item {
+          width: 15%;
+        }
+      }
+    }
+  }
 </style>

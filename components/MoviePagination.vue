@@ -42,13 +42,14 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../assets/css/utils.scss';
+
   .movie-page {
     display: block;
     width: 100%;
 
     .page-numbers {
-      display: flex;
-      flex-wrap: wrap;
+      @include flexDisplay($wrap: wrap);
       width: 100%;
       list-style: none;
       li {

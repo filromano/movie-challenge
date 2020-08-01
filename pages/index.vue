@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="index-page">
     <Search :class="[gotMovies ? 'top' : '']" />
     <transition name="fade">
       <MoviePagination v-if="gotMovies" />
@@ -19,14 +19,12 @@ export default {
 
 <style lang="scss">
 
-  .container {
+  .index-page {
     position: relative;
     box-sizing: border-box;
     display: block;
     width: 100%;
     height: 100%;
-    padding: 50px;
-    background: #777DA7;
     .top {
       top: 5%;
     }

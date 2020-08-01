@@ -31,6 +31,8 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../assets/css/utils.scss';
+
   .search {
     position: absolute;
     top: calc(50% - 25px);
@@ -47,21 +49,22 @@ export default {
       padding: 10px;
       margin-right: 10px;
       border: none;
+      border-radius: $border-radius;
       outline: none;
-      border-radius: 15px;
     }
 
     button {
       display: block;
       padding: 15px;
       border: none;
-      border-radius: 15px;
+      border-radius: $border-radius;
       outline: none;
-      background: #94C9A9;
+      background: $teal;
+      color: $fontWhite;
       cursor: pointer;
 
      &:hover {
-       background: #C6ECAE;
+       background: $tealHover;
      }
     }
   }
