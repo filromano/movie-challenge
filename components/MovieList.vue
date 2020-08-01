@@ -11,7 +11,12 @@
         <img :src="movie.Poster !== 'N/A' ? movie.Poster : require('~/assets/images/default.png')" :alt="movie.Title">
         <div class="tooltip" :class="{alpha: index === addIndex}">
           <p><strong>Título:</strong> {{ movie.Title }}</p>
-          <button> + Info</button>
+          <n-link
+            :to="{ path: `/details/${movie.imdbID}`}"
+            class="more-info"
+          >
+            + Info
+          </n-link>
         </div>
       </li>
     </ul>
@@ -51,7 +56,7 @@ export default {
   .movie-list {
     display: block;
     width: 100%;
-    padding-top: 150px;
+    padding-top: 100px;
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -96,13 +101,15 @@ export default {
               font-size: 1.2em;
             }
 
-            button {
+            .more-info {
               display: block;
               padding: 10px 0;
               border: none;
               border-radius: 15px;
               outline: none;
               background-color: #E58F65;
+              text-decoration: none;
+              text-align: center;
               font-size: 1.2em;
               color: #FFFFFF;
               cursor: pointer;
