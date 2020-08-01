@@ -17,14 +17,6 @@ export const mutations = {
   },
   cleanMovies: (state) => {
     state.movies = []
-  },
-  paginateMovies: (state) => {
-    const chunk = 6
-    let temporaryArray
-    for (let i = 0; i < state.movies.length; i += chunk) {
-      temporaryArray = state.movies.slice(i, i + chunk)
-      state.pages.push(temporaryArray)
-    }
   }
 }
 
@@ -43,9 +35,6 @@ export const actions = {
       axios.get(`https://www.omdbapi.com/?apikey=c267f60c&page=${i + 1}&type=movie&s=${value.name}`)
         .then((response) => {
           commit('updateMovies', response.data.Search)
-          if (i === value.pages - 1) {
-            commit('paginateMovies')
-          }
         })
         .catch(error => console.log(error))
     }

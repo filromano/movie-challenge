@@ -1,14 +1,9 @@
 <template>
   <div class="movie-page">
-    <MovieList
-      v-for="(page, index) in pages"
-      v-show="index === selectedPage"
-      :key="index"
-      :movies="page"
-    />
+    <MovieList :paginate="paginate" />
     <ul class="page-numbers">
-      <li v-for="(page, index) in pages" :key="index">
-        <span @click="changePage(index)"> {{ index + 1 }} </span>
+      <li v-for="(pageNumber, index) in totalPages" :key="index">
+        <a href="#" @click="changePage(pageNumber)">{{ pageNumber }}</a>
       </li>
     </ul>
   </div>
@@ -16,19 +11,31 @@
 
 <script>
 import { mapState } from 'vuex'
+import MovieList from './MovieList'
 
 export default {
+  components: {
+    MovieList
+  },
   data () {
     return {
-      selectedPage: 0
+      currentPage: 0,
+      itemsPerPage: 6
     }
   },
   computed: {
-    ...mapState(['pages'])
+    ...mapState(['movies']),
+    totalPages () {
+      return Math.ceil(this.movies.length / this.itemsPerPage)
+    },
+    paginate () {
+      const index = this.currentPage * this.itemsPerPage
+      return this.movies.slice(index, index + this.itemsPerPage)
+    }
   },
   methods: {
-    changePage (value) {
-      this.selectedPage = value
+    changePage (pageNumber) {
+      this.currentPage = pageNumber - 1
     }
   }
 }

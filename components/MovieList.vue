@@ -2,8 +2,8 @@
   <div class="movie-list">
     <ul>
       <li
-        v-for="(movie, index) in movies"
-        :key="movie.imbID"
+        v-for="(movie, index) in paginate"
+        :key="index"
         class="movie-item"
         @mouseover="showTooltip(index)"
         @mouseout="hideTooltip"
@@ -19,10 +19,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
   props: {
-    movies: {
+    paginate: {
       type: Array,
       default: null
     }
@@ -31,6 +32,9 @@ export default {
     return {
       addIndex: null
     }
+  },
+  computed: {
+    ...mapState(['movies'])
   },
   methods: {
     showTooltip (index) {
@@ -101,6 +105,7 @@ export default {
               background-color: #E58F65;
               font-size: 1.2em;
               color: #FFFFFF;
+              cursor: pointer;
             }
           }
 
