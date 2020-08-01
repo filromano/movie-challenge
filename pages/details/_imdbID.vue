@@ -46,18 +46,11 @@ export default {
 </script>
 
 <style lang="scss">
-  .container {
-    position: relative;
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+  @import '../../assets/css/utils.scss';
 
   .detail-page {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+    @include flexDisplay($direction: column);
+    width: 100%;
     height: 80%;
     margin: 0 auto;
     .header {
@@ -65,15 +58,24 @@ export default {
         font-size: 2.5em;
       }
       .sub-header {
+        margin-top: 10px;
         font-size: 1.2em;
         color: rgb(41, 41, 41);
       }
     }
     .info {
-      display: flex;
+      @include flexDisplay($direction: column, $items: center);
       width: 100%;
       margin-top: 30px;
-      align-items: center;
+
+      .movie-poster {
+        @include flexDisplay($items: center, $content: center);
+        max-width: 100%;
+
+        img {
+          max-width: 100%
+        }
+      }
 
       .details {
         display: block;
@@ -83,6 +85,23 @@ export default {
         .members {
           display: block;
           margin: 20px 0;
+        }
+      }
+    }
+    @include respond-to('medium') {
+      .info {
+        flex-direction: row;
+        justify-content: center;
+        width: 80%;
+        margin: 30px auto 0;
+
+        .movie-poster {
+          width: 40%;
+        }
+
+        .details {
+          width: 60%;
+          margin-top: 0px;
         }
       }
     }

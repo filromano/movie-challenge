@@ -59,10 +59,12 @@ export default {
       width: 100%;
       margin-top: 50px;
       list-style: none;
+
       li {
         padding: 10px;
         cursor: pointer;
       }
+
       .current {
         color: blue;
       }
@@ -77,6 +79,7 @@ export default {
 
       .last {
         display: block !important;
+
         &::before {
           content:'...'
         }
