@@ -10,7 +10,7 @@
     </div>
     <div class="info">
       <div class="movie-poster">
-        <img :src="movie.Poster" alt="">
+        <img :src="movie.Poster !== 'N/A' ? movie.Poster : require('~/assets/images/default.png')" :alt="movie.Title">
       </div>
       <div class="details">
         <p>{{ movie.Plot }}</p>
@@ -91,10 +91,10 @@ export default {
       }
     }
     @include respond-to('medium') {
+      width: 80%;
       .info {
         flex-direction: row;
         justify-content: center;
-        width: 80%;
         margin: 30px auto 0;
 
         .movie-poster {

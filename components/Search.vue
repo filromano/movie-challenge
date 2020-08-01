@@ -27,14 +27,14 @@ export default {
   computed: {
     ...mapGetters(['gotMovies'])
   },
+  mounted () {
+    this.activeHeight = window.innerHeight
+  },
   methods: {
     ...mapActions(['searchMovie']),
     getMovies () {
       this.searchMovie(this.name)
     }
-  },
-  mounted () {
-    this.activeHeight = window.innerHeight
   }
 }
 </script>
