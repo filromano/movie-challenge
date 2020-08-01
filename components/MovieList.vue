@@ -10,7 +10,7 @@
       >
         <img :src="movie.Poster !== 'N/A' ? movie.Poster : require('~/assets/images/default.png')" :alt="movie.Title">
         <div class="tooltip" :class="{alpha: index === addIndex}">
-          <p>{{ movie.Title }}</p>
+          <p>{{ movie.Title }} ({{ movie.Year }})</p>
           <n-link
             :to="{ path: `/details/${movie.imdbID}`}"
             class="more-info"
