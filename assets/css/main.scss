@@ -1,6 +1,6 @@
 @import './utils.scss';
 
-html, body, #__nuxt, #__layout {
+html, body {
   display: block;
   width: 100%;
   height: 100%;
@@ -8,6 +8,7 @@ html, body, #__nuxt, #__layout {
   padding: 0;
   background-color: $backgroundColor;
   font-family: $fontFamily, sans-serif;
+  color: $fontBlack;
 }
 
 ul, p {

@@ -53,7 +53,8 @@ export default {
     @include flexDisplay($direction: column);
     width: 100%;
     height: 80%;
-    margin: 50px auto 0;
+    margin: 0 auto;
+    padding-top: 50px;
     .header {
       .title {
         font-size: 2.5em;
