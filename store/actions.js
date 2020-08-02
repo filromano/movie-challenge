@@ -9,7 +9,7 @@ const searchMovie = ({ commit, dispatch }, name) => {
       const pages = Math.ceil(response.data.totalResults / 10)
       dispatch('getAllMovies', { pages, name })
     })
-    .catch(error => console.error(error))
+    .catch(erro => window.$nuxt.error({ message: 'Estamos com um problema no servidor' }))
 }
 
 const getAllMovies = ({ commit }, value) => {
@@ -30,7 +30,7 @@ const getMovieDetails = async (commit, imdbID) => {
     const { data } = await axios.get(`${api}&i=${imdbID}`)
     return data
   } catch (error) {
-    console.error(error)
+    return { message: 'Estamos com um problema no servidor' }
   }
 }
 

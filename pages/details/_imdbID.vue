@@ -14,6 +14,8 @@ export default {
       return { movie: data }
     } else if (data.Response === 'False') {
       error({ statusCode: 404, message: 'Filme não encontrado' })
+    } else {
+      error({ message: data.message })
     }
   },
   data () {
