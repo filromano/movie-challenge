@@ -14,7 +14,7 @@
       </div>
       <span v-show="showError" class="error-message">Por favor digite o nome de um filme</span>
       <div v-show="spinner && !gotMovies" class="spinner">
-        <img src="../assets/images/spinner.gif" alt="">
+        <img src="../../assets/images/spinner.gif" alt="">
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/css/utils.scss';
+  @import '~/assets/css/utils.scss';
 
   .search-container {
     position: relative;

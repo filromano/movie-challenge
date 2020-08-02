@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/css/utils.scss';
+  @import '~/assets/css/utils.scss';
 
   .movie-page {
     display: block;
