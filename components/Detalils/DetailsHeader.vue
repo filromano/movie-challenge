@@ -1,10 +1,14 @@
 <template>
   <div class="header">
     <div class="title">
-      <p>{{ movie.Title }} ({{ movie.Year }}) - {{ movie.Type }}</p>
+      <p>
+        {{ movie.Title }} ({{ movie.Year }}) - {{ movie.Type }}
+      </p>
     </div>
     <div class="sub-header">
-      <p>{{ movie.Rated }} | {{ movie.Released }} ({{ movie.Country }}) | {{ movie.Genre }} </p>
+      <p>
+        {{ movie.Rated }} | {{ movie.Released }} ({{ movie.Country }}) | {{ movie.Genre }}
+      </p>
     </div>
   </div>
 </template>

@@ -1,5 +1,8 @@
 <template>
-  <div :style="{height: activeHeight + 'px'}" :class="{'search-container': gotMovies}">
+  <div
+    :style="{height: activeHeight + 'px'}"
+    :class="{'search-container': gotMovies}"
+  >
     <div class="search" :class="{'move-top': gotMovies}">
       <div class="form">
         <input
@@ -12,7 +15,9 @@
           Buscar
         </button>
       </div>
-      <span v-show="showError" class="error-message">Por favor digite o nome de um filme</span>
+      <span v-show="showError" class="error-message">
+        Por favor digite o nome de um filme
+      </span>
       <div v-show="spinner && !gotMovies" class="spinner">
         <img src="../../assets/images/spinner.gif" alt="">
       </div>
