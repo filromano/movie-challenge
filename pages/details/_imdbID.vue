@@ -15,21 +15,21 @@
       <div class="details">
         <p>{{ movie.Plot }}</p>
         <div class="members">
-          <p><strong>Director:</strong> {{ movie.Director }}</p>
-          <p><strong>Writer:</strong> {{ movie.Writer }}</p>
-          <p><strong>Actors:</strong> {{ movie.Actors }}</p>
-          <p><strong>Language:</strong> {{ movie.Language }} </p>
+          <p><strong>Diretor:</strong> {{ movie.Director }}</p>
+          <p><strong>Escritores:</strong> {{ movie.Writer }}</p>
+          <p><strong>Atores:</strong> {{ movie.Actors }}</p>
+          <p><strong>Idiomas:</strong> {{ movie.Language }} </p>
         </div>
         <div class="meta-score">
           <p>{{ movie.Metascore }} <strong>Metascore</strong></p>
         </div>
         <div class="imdb-info">
           <p><strong>imdbID:</strong> {{ movie.imdbID }}</p>
-          <p>{{ movie.imdbRating }}/10 <strong>Rating</strong></p>
-          <p>{{ movie.imdbVotes }} <strong>Votes</strong></p>
+          <p>{{ movie.imdbRating }}/10 <strong>Nota</strong></p>
+          <p>{{ movie.imdbVotes }} <strong>Votos</strong></p>
         </div>
         <div>
-          <p><strong>Awards:</strong> {{ movie.Awards }}</p>
+          <p><strong>Prêmios:</strong> {{ movie.Awards }}</p>
         </div>
         <button class="back" @click="$router.go(-1)">
           Voltar
