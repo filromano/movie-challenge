@@ -66,5 +66,9 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://www.omdbapi.com/?apikey=',
+    APIToken: process.env.API_TOKEN || 'c267f60c'
   }
 }

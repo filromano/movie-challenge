@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-page">
+  <div v-if="movie" class="detail-page">
     <div class="header">
       <div class="title">
         <p>{{ movie.Title }} ({{ movie.Year }}) - {{ movie.Type }}</p>
@@ -40,12 +40,25 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
-  async asyncData ({ params }) {
-    const { data } = await axios.get(`https://www.omdbapi.com/?apikey=c267f60c&i=${params.imdbID}`)
-    return { movie: data }
+  async asyncData ({ store, params, error }) {
+    const data = await store.dispatch('getMovieDetails', params.imdbID)
+    if (data.Title !== undefined) {
+      return { movie: data }
+    } else if (data.Response === 'False') {
+      error({ statusCode: 404, message: 'Filme não encontrado' })
+    }
+  },
+  data () {
+    return {
+      movie: false
+    }
+  },
+  created () {
+    if (this.statusCode === 404) {
+      this.$router.push('/')
+    }
   }
 }
 </script>
