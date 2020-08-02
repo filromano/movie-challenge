@@ -21,7 +21,7 @@ const getAllMovies = ({ commit }, value) => {
           commit('updateLoad')
         }
       })
-      .catch(error => console.error(error))
+      .catch(erro => window.$nuxt.error({ message: 'Estamos com um problema no servidor' }))
   }
 }
 
