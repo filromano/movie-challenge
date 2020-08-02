@@ -98,18 +98,8 @@ export default {
           opacity: 0;
 
           .more-info {
-            display: block;
-            padding: 5px 0;
+            @include button($bgColor: #5863F8);
             margin-top: 10px;
-            border: none;
-            border-radius: $border-radius;
-            outline: none;
-            background-color: #5863F8;
-            box-shadow: $boxShadow;
-            text-decoration: none;
-            text-align: center;
-            color: #FFFFFF;
-            cursor: pointer;
           }
         }
 

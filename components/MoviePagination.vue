@@ -61,8 +61,11 @@ export default {
       list-style: none;
 
       li {
-        padding: 10px;
-        cursor: pointer;
+
+        span {
+          padding: 10px;
+          cursor: pointer;
+        }
       }
 
       .current {

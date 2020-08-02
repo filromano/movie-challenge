@@ -20,15 +20,20 @@
           <p><strong>Actors:</strong> {{ movie.Actors }}</p>
           <p><strong>Language:</strong> {{ movie.Language }} </p>
         </div>
-        <div>
+        <div class="meta-score">
           <p>{{ movie.Metascore }} <strong>Metascore</strong></p>
         </div>
-        <div>
-          <p>{{ movie.imdbID }}</p>
+        <div class="imdb-info">
+          <p><strong>imdbID:</strong> {{ movie.imdbID }}</p>
           <p>{{ movie.imdbRating }}/10 <strong>Rating</strong></p>
           <p>{{ movie.imdbVotes }} <strong>Votes</strong></p>
+        </div>
+        <div>
           <p><strong>Awards:</strong> {{ movie.Awards }}</p>
         </div>
+        <button class="back" @click="$router.go(-1)">
+          Voltar
+        </button>
       </div>
     </div>
   </div>
@@ -88,6 +93,20 @@ export default {
           display: block;
           margin: 20px 0;
         }
+
+        .meta-score {
+          margin-bottom: 10px;
+        }
+
+        .imdb-info {
+          margin-bottom: 10px;
+        }
+      }
+
+      .back {
+        @include button($bgColor: #5863F8);
+        width: 200px;
+        margin-top: 20px;
       }
     }
     @include respond-to('medium') {

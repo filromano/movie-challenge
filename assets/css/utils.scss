@@ -33,6 +33,20 @@ $breakpoints: (
   }
 }
 
+@mixin button($bgColor: null, $textColor: $fontWhite) {
+  display: block;
+  padding: 10px 0;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  background-color: $bgColor;
+  box-shadow: $boxShadow;
+  text-decoration: none;
+  text-align: center;
+  color: $textColor;
+  cursor: pointer;
+}
+
 .container {
   display: block;
   width: 100%;
