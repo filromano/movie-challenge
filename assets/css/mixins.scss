@@ -1,0 +1,30 @@
+@mixin flexDisplay($direction: row, $wrap: null, $items: null, $content: null) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $items;
+  flex-wrap: $wrap;
+  box-sizing: border-box;
+}
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin button($bgColor: null, $textColor: $fontWhite) {
+  display: block;
+  padding: 10px 0;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  background-color: $bgColor;
+  box-shadow: $boxShadow;
+  text-decoration: none;
+  text-align: center;
+  color: $textColor;
+  cursor: pointer;
+}

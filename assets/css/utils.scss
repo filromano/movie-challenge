@@ -1,51 +1,5 @@
-$backgroundColor: #EFE9F4;
-$teal: #16BAC5;
-$tealHover: #20a6b0;
-$blueAlpha: #5fbef9f0;
-
-$border-radius: 15px;
-$boxShadow: 0px 0px 6px -1px rgba(0,0,0,0.43);
-
-$fontBlack: #171D1C;
-$fontWhite: #FFFFFF;
-$fontFamily: 'Roboto';
-
-$breakpoints: (
-  'medium': 600px,
-  'large': 1290px,
-) !default;
-
-//Mixings
-@mixin flexDisplay($direction: row, $wrap: null, $items: null, $content: null) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $content;
-  align-items: $items;
-  flex-wrap: $wrap;
-  box-sizing: border-box;
-}
-
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  }
-}
-
-@mixin button($bgColor: null, $textColor: $fontWhite) {
-  display: block;
-  padding: 10px 0;
-  border: none;
-  border-radius: $border-radius;
-  outline: none;
-  background-color: $bgColor;
-  box-shadow: $boxShadow;
-  text-decoration: none;
-  text-align: center;
-  color: $textColor;
-  cursor: pointer;
-}
+@import './variables.scss';
+@import './mixins.scss';
 
 .container {
   display: block;
